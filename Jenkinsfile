@@ -3,7 +3,11 @@ pipeline{
     agent{label 'node1' }
 
     environment{
+<<<<<<< HEAD
         SCANNER_HOME=tool 'sonar-scanner'  //If my SonarQube Scanner name is sonar-scanner. Then it's working otherwise it's not working...
+=======
+        SCANNER_HOME=tool 'sonar-scanner'  
+>>>>>>> 9456e4bdaa8475ad666a1c13bcb77b37b13ae23b
     }
     parameters{
         string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
@@ -105,7 +109,11 @@ pipeline{
             }
         }
     post{
+<<<<<<< HEAD
         success{
+=======
+       success{
+>>>>>>> 9456e4bdaa8475ad666a1c13bcb77b37b13ae23b
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
             build job: "Wanderlust-CD", parameters: [
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
@@ -114,5 +122,7 @@ pipeline{
         }
       }
     }
+
+ }
 
 }
