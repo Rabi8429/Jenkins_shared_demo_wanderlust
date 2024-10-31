@@ -3,7 +3,7 @@ pipeline{
     agent{label 'node1' }
 
     environment{
-        SCANNER_HOME=tool 'sonar-scanner'  # If my SonarQube Scanner name is sonar-scanner. Then it's working otherwise it's not working...
+        SCANNER_HOME=tool 'sonar-scanner'  //If my SonarQube Scanner name is sonar-scanner. Then it's working otherwise it's not working...
     }
     parameters{
         string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
@@ -54,7 +54,7 @@ pipeline{
                 }
             }
         }
-        stage('SonarQube: Code Analysis'){
+        stage('SonarQube: Code Quality Check'){
             steps{
                 script{
                     sonarqube_code_quality()
@@ -104,7 +104,7 @@ pipeline{
                 }
             }
         }
-        post{
+    post{
         success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
             build job: "Wanderlust-CD", parameters: [
