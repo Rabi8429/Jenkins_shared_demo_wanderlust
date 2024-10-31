@@ -1,6 +1,6 @@
-@library('Shared') _
+@Library('Shared') _
 pipeline{
-    agent{label 'node-1' }
+    agent{label 'node1' }
 
     environment{
         SCANNER_HOME=tool 'sonar-scanner'
@@ -22,7 +22,7 @@ pipeline{
         stage('Workspace cleanup'){
             steps{
                 script{
-                    cleansWs()
+                    cleanWs()
                 }
             }
         }
