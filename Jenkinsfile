@@ -105,7 +105,7 @@ pipeline{
             }
         }
     post{
-    success{
+       success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
             build job: "Wanderlust-CD", parameters: [
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
