@@ -59,7 +59,7 @@ pipeline{
         stage('SonarQube: Code Quality Check'){
             steps{
                 script{
-                    sonarqube_code_quality()
+                    sonarqube_code_quality("sonar-server")
                 }
             }
         }
@@ -106,6 +106,7 @@ pipeline{
                 }
             }
        }
+    } 
     post{
        success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
@@ -114,9 +115,9 @@ pipeline{
                 string(name: 'BACKEND_DOCKER_TAG', value: "${params.BACKEND_DOCKER_TAG}")
             ]
         }
-      }
     }
-
 }
+
+
 
 
