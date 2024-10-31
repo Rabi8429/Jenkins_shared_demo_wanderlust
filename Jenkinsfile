@@ -54,7 +54,7 @@ pipeline{
                 }
             }
         }
-        stage('SonarQube: Code Analysis'){
+        stage('SonarQube: Code Quality Check'){
             steps{
                 script{
                     sonarqube_code_quality()
