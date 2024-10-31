@@ -3,7 +3,7 @@ pipeline{
     agent{label 'node1' }
 
     environment{
-        SCANNER_HOME=tool 'sonar-scanner'  # If my SonarQube Scanner name is sonar-scanner. Then it's working otherwise it's not working...
+        SCANNER_HOME=tool 'sonar-scanner'  
     }
     parameters{
         string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
