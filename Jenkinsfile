@@ -59,7 +59,7 @@ pipeline{
         stage('SonarQube: Code Quality Check'){
             steps{
                 script{
-                    sonarqube_code_quality("sonar-server")
+                    sonarqube_code_quality()
                 }
             }
         }
