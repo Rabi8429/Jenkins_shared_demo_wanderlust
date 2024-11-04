@@ -20,6 +20,7 @@ pipeline {
             steps {
                 script{
                     code_checkout("https://github.com/Rabi8429/Wanderlust-Mega-Project.git","main")
+https://github.com/Rabi8429/Wanderlust-Mega-Project.git
                 }
             }
         }
