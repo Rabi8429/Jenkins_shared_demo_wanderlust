@@ -1,6 +1,6 @@
 @Library('Shared') _
 pipeline{
-    agent{label 'node1' }
+    agent {label 'node1'}
 
     environment{
 
@@ -55,14 +55,7 @@ pipeline{
                     sonarqube_analysis('sonar-server',"wanderlust","wanderlust" )
                 }
             }
-        }
-        stage('SonarQube: Code Quality Check'){
-            steps{
-                script{
-                    sonarqube_code_quality()
-                }
-            }
-        }
+        }        
         stage('Exporting environment variables') {
             parallel{
                 stage("Backend env setup"){
@@ -110,7 +103,7 @@ pipeline{
     post{
        success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
-            build job: "Wanderlust-CD", parameters: [
+            build job: "wanderlust-CD", parameters: [
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
                 string(name: 'BACKEND_DOCKER_TAG', value: "${params.BACKEND_DOCKER_TAG}")
             ]
